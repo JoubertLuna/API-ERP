@@ -16,7 +16,10 @@ return new class extends Migration
       $table->string('produto')->unique();
       $table->string('eh_produto', 1)->default('1'); // 1 = sim - 0 = não;
       $table->string('eh_insumo', 1)->default('0'); // 1 = sim - 0 = não
-      $table->decimal('preco', 10, 2)->default(0.00);
+      $table->decimal('valor_compra', 10, 2)->default(0.00);
+      $table->decimal('valor_venda', 10, 2)->default(0.00);
+      $table->string('codigo_interno', 8)->nullable();
+      $table->string('gtin', 8)->nullable();
       $table->string('imagem')->nullable();
       $table->string('ativo', 1)->default('1'); // 1 = sim - 0 = não
       $table->foreignId('category_id')->constrained()->onDelete('cascade');

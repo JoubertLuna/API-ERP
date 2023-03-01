@@ -20,18 +20,18 @@ Route::get('', function () {
 
 #Route Login
 Route::post('/auth/login', [AuthController::class, 'login']);
-#Route Login
 
 #Route Register
 Route::post('/auth/register', [AuthController::class, 'register']);
-#Route Register
 
 //Middleware
 Route::middleware('auth:api')->group(function () {
 
+  #Route Refresh
+  Route::post('/auth/refresh', [AuthController::class, 'refresh']);
+
   #Route Logout
   Route::post('/auth/logout', [AuthController::class, 'logout']);
-  #Route Logout
 
   #Cadastros Base { category / unity / product / contact / user }
   Route::resource('category', CategoryController::class);

@@ -29,6 +29,8 @@ return new class extends Migration
       $table->string('complemento')->nullable();
       $table->string('bairro')->nullable();
       $table->string('image')->default('default.jpg');
+      $table->string('ativo', 1)->default('1'); // 1 = sim - 0 = não
+      $table->date('nascimento')->default('2012/12/12');
       $table->rememberToken();
       $table->timestamps();
     });
