@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ProductResource extends JsonResource
 {
@@ -23,7 +24,7 @@ class ProductResource extends JsonResource
       'valor_venda' => $this->valor_venda,
       'codigo_interno' => $this->codigo_interno,
       'gtin' => $this->gtin,
-      'imagem' => $this->imagem,
+      'imagem' => $this->imagem ? Storage::url($this->imagem): '',
       'ativo' => $this->ativo,
       'category_id' => $this->category_id,
       'unity_id' => $this->unity_id,

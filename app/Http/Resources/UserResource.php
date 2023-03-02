@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class UserResource extends JsonResource
 {
@@ -30,7 +31,7 @@ class UserResource extends JsonResource
       'cidade' => $this->cidade,
       'complemento' => $this->complemento,
       'bairro' => $this->bairro,
-      'image' => $this->image,
+      'image' => $this->image ? Storage::url($this->image): '',
       'ativo' => $this->ativo,
       'nascimento' => Carbon::parse($this->nascimento)->format('d/m/Y'),
       'data_criacao' => Carbon::parse($this->created_at)->format('d/m/Y'),
