@@ -12,7 +12,7 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('contacts', function (Blueprint $table) {
-      $table->id();
+      $table->uuid('id')->primary();
       $table->string('eh_cliente', 1)->default('1'); // 1 = sim - 0 = não
       $table->string('eh_fornecedor', 1)->default('0'); // 1 = sim - 0 = não
       $table->string('eh_transportador', 1)->default('0'); // 1 = sim - 0 = não

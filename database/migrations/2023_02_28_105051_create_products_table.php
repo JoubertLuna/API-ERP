@@ -12,7 +12,7 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('products', function (Blueprint $table) {
-      $table->id();
+      $table->uuid('id')->primary();
       $table->string('produto')->unique();
       $table->string('eh_produto', 1)->default('1'); // 1 = sim - 0 = não;
       $table->string('eh_insumo', 1)->default('0'); // 1 = sim - 0 = não
@@ -22,8 +22,10 @@ return new class extends Migration
       $table->string('gtin', 8)->nullable();
       $table->string('imagem')->nullable();
       $table->string('ativo', 1)->default('1'); // 1 = sim - 0 = não
-      $table->foreignId('category_id')->constrained()->onDelete('cascade');
-      $table->foreignId('unity_id')->constrained()->onDelete('cascade');
+      $table->uuid('category_id')->index();
+      $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+      $table->uuid('unity_id')->index();
+      $table->foreign('unity_id')->references('id')->on('unities')->onDelete('cascade');
       $table->timestamps();
     });
   }

@@ -2,12 +2,16 @@
 
 namespace App\Models\API;
 
+use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-  use HasFactory;
+  use HasFactory, UuidTrait;
+
+  public $incrementing = false;
+  protected $keyType = 'uuid';
 
   protected $fillable = ['produto', 'eh_produto', 'eh_insumo', 'preco', 'imagem', 'ativo', 'unity_id', 'category_id'];
 
